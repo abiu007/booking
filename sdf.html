@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BusBooking</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
+body {background:#f0f8ff; color:#333;}
+header {background:#0077b6; color:white; padding:20px 40px; display:flex; justify-content:space-between; align-items:center;}
+header h1{font-size:26px;}
+nav a{color:white; text-decoration:none; margin-left:20px; font-weight:500;}
+nav a:hover{text-decoration:underline;}
+
+.hero{background:linear-gradient(to right,#00b4d8,#0077b6); color:white; text-align:center; padding:80px 20px;}
+.hero h2{font-size:3rem; margin-bottom:10px;}
+.hero p{font-size:1.2rem; margin-bottom:20px;}
+.hero button{padding:12px 30px; border:none; border-radius:30px; background:white; color:#0077b6; font-size:16px; cursor:pointer; transition:transform 0.3s;}
+.hero button:hover{transform:scale(1.1);}
+
+.booking{max-width:800px; margin:50px auto; background:white; padding:30px; border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+.booking h2{color:#0077b6; margin-bottom:20px; text-align:center;}
+.booking form{display:flex; flex-direction:column; gap:15px;}
+.booking label{font-weight:bold;}
+.booking input, .booking select{padding:10px; border-radius:8px; border:1px solid #ccc; font-size:16px;}
+
+#confirmBtn{padding:12px; border:none; border-radius:25px; background:#0077b6; color:white; font-size:16px; cursor:pointer; transition:transform 0.3s; display:none;}
+#confirmBtn:hover{transform:scale(1.05);}
+
+footer{background:#0077b6; color:white; text-align:center; padding:15px; margin-top:50px;}
+@media(max-width:600px){.hero h2{font-size:2rem;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>BusBooking</h1>
+<nav>
+<a href="#">Home</a>
+<a href="#">Book</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h2>Book Your Bus Tickets Easily</h2>
+<p>Fast, Simple & Reliable Online Booking</p>
+<button>Book Now</button>
+</section>
+
+<section class="booking">
+<h2>Bus Ticket Booking</h2>
+<form id="bookingForm">
+<label for="from">From</label>
+<input type="text" id="from" placeholder="City name" required>
+
+<label for="to">To</label>
+<input type="text" id="to" placeholder="City name" required>
+
+<label for="date">Journey Date</label>
+<input type="date" id="date" required>
+
+<label for="seat">Number of Seats</label>
+<select id="seat" required>
+<option value="">Select</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+
+<button type="submit" id="confirmBtn">Confirm Booking</button>
+</form>
+</section>
+
+<footer>
+<p>© 2025 BusBooking | All Rights Reserved</p>
+</footer>
+
+<script>
+const form = document.getElementById('bookingForm');
+const confirmBtn = document.getElementById('confirmBtn');
+
+form.addEventListener('input', () => {
+    const from = document.getElementById('from').value.trim();
+    const to = document.getElementById('to').value.trim();
+    const date = document.getElementById('date').value;
+    const seat = document.getElementById('seat').value;
+
+    if(from && to && date && seat) {
+        confirmBtn.style.display = 'block'; // show button
+    } else {
+        confirmBtn.style.display = 'none'; // hide button
+    }
+});
+
+// Optional: prevent actual submission for demo
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    alert('Booking Confirmed! 🎉');
+});
+</script>
+
+</body>
+</html>
+
